@@ -1,4 +1,7 @@
-﻿namespace Data;
+﻿using System;
+using System.Collections.Generic;
+
+namespace Data;
 
 public class Category
 {

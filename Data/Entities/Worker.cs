@@ -1,16 +1,19 @@
-﻿namespace Data;
+﻿using System;
+using System.Collections.Generic;
+
+namespace Data;
 
 public class Worker
 {
     public int WorkerId { get; set; }
 
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
-    public string Username { get; set; }
+    public string Username { get; set; } = string.Empty;
 
-    public string Password { get; set; } // In production, use hashed passwords
+    public string Password { get; set; } = string.Empty; // In production, use hashed passwords
 
-    public string Role { get; set; } = "Cashier";
+    public WorkerRole Role { get; set; } = WorkerRole.Cashier;
         
     public bool IsActive { get; set; } = true;
         

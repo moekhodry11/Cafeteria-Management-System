@@ -1,4 +1,7 @@
-﻿namespace Data;
+﻿using System;
+using System.Collections.Generic;
+
+namespace Data;
 
 public class Order
 {
@@ -8,9 +11,17 @@ public class Order
 
     public decimal TotalAmount { get; set; }
 
-    public string Status { get; set; } = "Pending"; // Pending, Completed, Cancelled
+    public OrderStatus Status { get; set; } = OrderStatus.Pending;
 
-    public string Notes { get; set; }
+    // Add payment method
+    public PaymentMethod PaymentMethod { get; set; } = PaymentMethod.Cash;
+
+    // Add payment status
+    public bool IsPaid { get; set; } = false;
+
+    public DateTime? PaidDate { get; set; }
+
+    public string? Notes { get; set; }
 
     // Foreign keys
     public int? TableId { get; set; }
@@ -18,9 +29,9 @@ public class Order
     public int WorkerId { get; set; }
 
     // Navigation properties
-    public virtual Table Table { get; set; }
+    public virtual Table? Table { get; set; }
 
-    public virtual Worker Worker { get; set; }
+    public virtual Worker Worker { get; set; } = null!;
         
     public virtual ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
 }
